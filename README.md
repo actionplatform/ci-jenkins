@@ -14,7 +14,8 @@ apPipeline(image: 'python:3.12')
 | `apSetup(language:)` | dependencies |
 | `apCheck(language:)` | lint, format, tests |
 | `apConventionalCommit(base:)` | Conventional Commits on the change range |
+| `apGitflow(head:, base:)` | branch name and merge target follow git-flow |
 | `apRelease(tag:, files:, branch:)` | version bump from tag |
-| `apPipeline(image:, language:)` | declarative pipeline: setup → check → commits (PRs) |
+| `apPipeline(image:, language:)` | declarative pipeline: setup → check → commits → git-flow (PRs) |
 
 Tag `vX.Y.Z`; `v1` floats to the latest.
