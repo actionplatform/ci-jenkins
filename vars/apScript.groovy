@@ -5,6 +5,7 @@ def call(String name, Map env = [:]) {
     sh """
         mkdir -p .ap
         curl -fsSL "${base}/lib.sh" -o .ap/lib.sh
+        curl -fsSL "${base}/gitflow.sh" -o .ap/gitflow.sh
         curl -fsSL "${base}/${name}.sh" -o ".ap/${name}.sh"
         chmod +x .ap/*.sh
         ${exports}

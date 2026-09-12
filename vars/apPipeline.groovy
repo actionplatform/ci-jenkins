@@ -9,6 +9,10 @@ def call(Map args = [:]) {
                 when { changeRequest() }
                 steps { apConventionalCommit() }
             }
+            stage('Git-flow') {
+                when { changeRequest() }
+                steps { apGitflow() }
+            }
         }
     }
 }
