@@ -25,4 +25,8 @@ Needs a Docker-capable agent and a Multibranch job for the PR-only stages. Set `
 | `apRelease(tag:, files:, branch:)` | version bump from tag |
 | `apPipeline(image:, language:)` | declarative pipeline: setup → check → commits → git-flow (PRs) |
 
+## Deploy jobs the platform starts
+
+A deploy job of your own (not `apPipeline`) can be started from Action Platform: declare it in `platform.toml` as a target with `run_by = "jenkins"`, `observe = false`, its `job` path and `version_parameter` — the job's string parameter that receives the release tag (`RELEASE_TAG`, say). The platform calls `buildWithParameters` with that parameter alone, follows the build through the queue and its stages, and records the result. The job keeps its own credentials; the platform's Jenkins user needs *Overall/Read* and *Job/Read* + *Job/Build* on that job. The model: [deployments](https://github.com/actionplatform/action-platform/blob/master/docs/concept_deployments.md#dispatched-jenkins-jobs).
+
 Tag `vX.Y.Z`; `v1` floats to the latest.
